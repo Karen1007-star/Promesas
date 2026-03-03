@@ -102,57 +102,150 @@
 
 // promesas1()
 
-function promesas1(){
-    return new Promise((res,rej)=>{
-        setTimeout(()=>{
-            res("Hola MUndo");
-        }, 2000)
-    })
-}
+// function promesas1(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(()=>{
+//             res("Hola MUndo");
+//         }, 2000)
+//     })
+// }
 
-async function resuelve(){
-    const resultado = await promesas1()
-    console.log(resultado)
-}
+// async function resuelve(){
+//     const resultado = await promesas1()
+//     console.log(resultado)
+// }
 
-resuelve()
+// resuelve()
 
 // 1️⃣ Promesa simple con setTimeout
 // Crea una función esperar(ms) que devuelva una promesa que se resuelva después de ms milisegundos con el mensaje "Tiempo cumplido".
 // Llama a la función con 2 segundos y usa await para imprimir el mensaje.
 
 
-function promesa2(ms){
-    return new Promise ((res,rej)=>{
-        setTimeout(()=>{
-            res("tiempo cumplido")
-        }, ms*1000)
-    })
-}
+// function promesa2(ms){
+//     return new Promise ((res,rej)=>{
+//         setTimeout(()=>{
+//             res("tiempo cumplido")
+//         }, ms*1000)
+//     })
+// }
 
-async function esperar(){
-    const resultado = await promesa2(3)
-    console.log(resultado)
-}
-esperar()
+// async function esperar(){
+//     const resultado = await promesa2(3)
+//     console.log(resultado)
+// }
+// esperar()
 
 // 2️⃣ Promesa con cálculo
 // Crea una función sumar(a, b) que devuelva una promesa que se resuelva con la suma de a + b después de 1 segundo.
 // Llama a la función usando await e imprime el resultado.
 
-function promesa3(a,b){
-    return new Promise((res, rej)=>{
-        setTimeout(() => {
-            res(a+b)
-        }, 1000);
-    })
+// function promesa3(a,b){
+//     return new Promise((res, rej)=>{
+//         setTimeout(() => {
+//             res(a+b)
+//         }, 1000);
+//     })
+// }
+
+// async function calculo(){
+//     const resul1 = await promesa3(2,3)
+//     console.log(resul1)
+//     const resul2 = await promesa3(3,3)
+//     console.log(resul2)
+// } 
+
+// calculo()
+
+// 3️⃣ Encadenamiento de promesas
+// Crea 3 funciones: paso1(), paso2(), paso3(). Cada una devuelve una promesa que se resuelve con un mensaje ("Paso 1 completado", "Paso 2 completado", etc.) después de 1 segundo.
+// Llama a las funciones en orden usando async/await e imprime los mensajes en consola.
+// function paso1(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(() => {
+//             res("Paso 1 completado")
+//         }, 1000);
+//     }) 
+// }
+// function paso2(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(() => {
+//             res("Paso 2 completado")
+//         }, 1000);
+//     }) 
+// }
+// function paso3(){
+//     return new Promise((res,rej)=>{
+//         setTimeout(() => {
+//             res("Paso 3 completado")
+//         }, 1000);
+//     }) 
+// }
+
+// async function imprimir() {
+//     const res1 = await paso1()
+//     const res2 = await paso2()
+//     const res3 = await paso3()
+
+//     console.log(res1)
+//     console.log(res2)
+//     console.log(res3)
+// }
+
+// imprimir()
+
+// 4️⃣ Manejo de errores
+// Crea una función revisarNumero(n) que devuelva una promesa:
+// Si n > 10 → resuelve "Número válido"
+// Si n <= 10 → rechaza "Número inválido"
+// Usa try/catch dentro de una función async para imprimir el resultado o el error.
+
+// 🟢 Ejercicio 1 — Delay reutilizable (Base obligatoria)
+// Enunciado
+// Crea una función:
+// Que:
+
+// Espere ms milisegundos
+// No devuelva nada
+// Lance error si ms no es un número positivo
+
+// function delay(ms, num){
+//     return new Promise((res, rej)=>{
+//         setTimeout(()=>{
+//             if(num>=0){
+//                 res("numero positivo")
+//             }else if(num<0){
+//                 rej("numero negativo")
+//             }
+//         }, ms)
+//     })
+// }
+
+// async function test() {
+//   try {
+//     const resultado = await delay(1000, 1);
+//     console.log(resultado);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// console.log(test())
+
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
 }
 
-async function calculo(){
-    const resul1 = await promesa3(2,3)
-    console.log(resul1)
-    const resul2 = await promesa3(3,3)
-    console.log(resul2)
-} 
+console.log("A");
 
-calculo()
+setTimeout(() => {
+  console.log("B");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("C");
+});
+
+console.log("D");
