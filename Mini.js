@@ -27,3 +27,12 @@ const usuarios = [
   { id: 2, nombre: "Carlos" },
   { id: 3, nombre: "Lucía" }
 ];
+
+function ejemploVar() {
+    for (var i = 0; i < 5; i++) {
+        console.log(i); // 0, 1, 2, 3, 4
+    }
+    console.log(i); // 5  <-- ¡Sigue existiendo fuera del for!
+}
+
+ejemploVar();
